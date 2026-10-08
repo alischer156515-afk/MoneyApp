@@ -1,17 +1,29 @@
-package schoool.redrover;
+package school.redrover;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        List<Credit> credits = new ArrayList<>();
+
+        credits.add(new Credit("VTB", LocalDate.of(2026, 10, 15), 20324, "Nastya"));
+        credits.add(new Credit("Parking", LocalDate.of(2026, 10, 07), 4000, "Alischer"));
+        credits.add(new Credit("Yandex", LocalDate.of(2026, 10, 07), 1522, "Alischer"));
+        credits.add(new Credit("VBRR", LocalDate.of(2026, 10, 15), 15120, "Nastya"));
+        credits.add(new Credit("SBER", LocalDate.of(2026, 10, 23), 18202, "Alischer"));
+        credits.add(new Credit("TBANK", LocalDate.of(2026, 10, 25), 150000, "Alischer"));
+        credits.add(new Credit("ALFA-BANK", LocalDate.of(2026, 10, 25), 100000, "Alischer"));
+
+        CreditPrinter.printForOwner(credits, "Nastya");
+        System.out.println("=== ... ===");
+        CreditPrinter.printForOwner(credits, "Alischer");
+
+        System.out.printf("Итого за месяц для Nastya: %.2f руб.%n",
+                CreditCalculator.totalForOwner(credits, "Nastya"));
+        System.out.printf("Итого за месяц для Alischer: %.2f руб.%n",
+                CreditCalculator.totalForOwner(credits, "Alischer"));
     }
 }

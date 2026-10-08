@@ -1,4 +1,4 @@
-package schoool.redrover;
+package school.redrover;
 
 import java.time.LocalDate;
 
